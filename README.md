@@ -1,5 +1,6 @@
 # Squarebrain
 
+[![Build Status](https://travis-ci.org/micschwarz/Squarebrains2.svg?branch=master)](https://travis-ci.org/micschwarz/Squarebrains2)
 [![Maintainability](https://api.codeclimate.com/v1/badges/bb26461ef93c9dbc8a7f/maintainability)](https://codeclimate.com/github/micschwarz/Squarebrains2/maintainability)
 
 Little game made by students as a project for class 
