@@ -1,5 +1,7 @@
 # Squarebrains2
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/bb26461ef93c9dbc8a7f/maintainability)](https://codeclimate.com/github/micschwarz/Squarebrains2/maintainability)
+
 Little game made by students as a project for class 
 
 ## Getting Started
