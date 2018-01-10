@@ -18,4 +18,4 @@ Run `ant build` in Terminal
 
 ## Versioning
 
-Not versioned yet, I'm planing to use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Not versioned yet, I'm planing to use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/micschwarz/Squarebrains2/tags). 
