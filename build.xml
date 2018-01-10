@@ -1,6 +1,7 @@
 <?xml version = "1.0"?>
 <project name="Squarebrains" default="build">
     <target name="build">
+        <mkdir dir="bin\production\Squarebrain"/>
         <javac srcdir="src"
                destdir="bin\production\Squarebrain"
         />
