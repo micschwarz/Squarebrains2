@@ -2,7 +2,7 @@ package de.ms.squarebrain.menu.components;
 
 import javax.swing.*;
 
-public class InputUser implements MenuComponent
+public class User implements MenuComponent
 {
     JTextField inUser;
 

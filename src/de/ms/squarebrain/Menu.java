@@ -3,8 +3,6 @@ package de.ms.squarebrain;
 import de.ms.squarebrain.menu.components.*;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -26,12 +24,13 @@ public class Menu extends JFrame {
     private JComboBox boxGamemode;
 
     //Settings
-    private int difficulty = 1;
-    private int gamemode = 0;
-    private String w = "600";
-    private String h = "400";
-    private String name = "Max Mustermann";
     public int size = 20;
+
+    // Settings
+    private Resolution resolution;
+    private GameMode gameMode;
+    private Difficulty difficulty;
+    private User user;
 
     public static void main(String[] args)
     {
@@ -95,11 +94,14 @@ public class Menu extends JFrame {
         // Add Settings Header
         (new Heading()).registerComponent(contentPane, "Settings");
         // Add Resolution
-        (new Resolution()).registerComponent(contentPane, 600,400);
+        resolution = new Resolution();
+        resolution.registerComponent(contentPane);
         // Add Gamemode
-        (new GameMode()).registerComponent(contentPane, gamemode);
+        gameMode = new GameMode();
+        gameMode.registerComponent(contentPane);
         // Add Difficulty
-        (new Difficulty()).registerComponent(contentPane, difficulty);
+        difficulty = new Difficulty();
+        difficulty.registerComponent(contentPane);
         // Add Reset
         Reset reset = new Reset();
         reset.registerComponent(contentPane);
@@ -109,7 +111,8 @@ public class Menu extends JFrame {
         // Add User Header
         (new Heading()).registerComponent(contentPane,"User");
         //Add User Name
-        (new InputUser()).registerComponent(contentPane, name);
+        user = new User();
+        user.registerComponent(contentPane);
         // Add Highscore button
         ButtonHighscore btnScore = new ButtonHighscore();
         btnScore.registerComponent(contentPane);
