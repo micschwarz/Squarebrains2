@@ -93,6 +93,10 @@ public class Menu extends JFrame {
         (new GameMode()).registerComponent(contentPane, gamemode);
         // Add Difficulty
         (new Difficulty()).registerComponent(contentPane, difficulty);
+        // Add Reset
+        Reset reset = new Reset();
+        reset.registerComponent(contentPane);
+        reset.getBtnReset().addActionListener(arg0 -> new ResetSettingsPop(frame));
 
         JButton btnHighscore = new JButton("Highscore");
         btnHighscore.addActionListener(new ActionListener() {
@@ -141,12 +145,7 @@ public class Menu extends JFrame {
 
         JButton btnReset = new JButton("reset");
         btnReset.setToolTipText("More settings");
-        btnReset.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0)
-            {
-                new ResetSettingsPop(frame);
-            }
-        });
+
         btnReset.setBounds(100, 314, 100, 23);
         contentPane.add(btnReset);
     }
