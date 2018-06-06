@@ -1,7 +1,6 @@
 package de.ms.squarebrain;
 
-import de.ms.squarebrain.menu.components.ButtonPlay;
-import de.ms.squarebrain.menu.components.Title;
+import de.ms.squarebrain.menu.components.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -79,22 +78,21 @@ public class Menu extends JFrame {
         // Add Playbutton
         ButtonPlay button = new ButtonPlay();
         button.registerComponent(contentPane);
-        try {
-            button.getBtnPlay().addActionListener(e -> {
-                size = (int) squaresize.getValue();
-                new Game(Integer.parseInt(textw.getText()), Integer.parseInt(texth.getText()), txtName.getText(), (String) boxGamemode.getSelectedItem(), (String) boxDifficulty.getSelectedItem(), size);
-                frame.setVisible(false);
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        button.getBtnPlay().addActionListener(e -> {
+            size = (int) squaresize.getValue();
+            new Game(Integer.parseInt(textw.getText()), Integer.parseInt(texth.getText()), txtName.getText(), (String) boxGamemode.getSelectedItem(), (String) boxDifficulty.getSelectedItem(), size);
+            frame.setVisible(false);
+        });
 
-        boxGamemode = new JComboBox();
-        boxGamemode.setToolTipText("Gamemode");
-        boxGamemode.setModel(new DefaultComboBoxModel(new String[]{"Classic", "Arcade"}));
-        boxGamemode.setSelectedIndex(gamemode);
-        boxGamemode.setBounds(100, 220, 100, 20);
-        contentPane.add(boxGamemode);
+        // SETTINGS
+        // Add Settings Heading
+        (new Heading()).registerComponent(contentPane, "Settings");
+        // Add Resolution
+        (new Resolution()).registerComponent(contentPane, 600,400);
+        // Add Gamemode
+        (new GameMode()).registerComponent(contentPane, gamemode);
+        // Add Difficulty
+        (new Difficulty()).registerComponent(contentPane, difficulty);
 
         JButton btnHighscore = new JButton("Highscore");
         btnHighscore.addActionListener(new ActionListener() {
@@ -107,24 +105,7 @@ public class Menu extends JFrame {
         btnHighscore.setBounds(100, 403, 100, 23);
         contentPane.add(btnHighscore);
 
-        textw = new JTextField();
-        textw.setToolTipText("Game width");
-        textw.setText(w);
-        textw.setBounds(100, 189, 40, 20);
-        contentPane.add(textw);
-        textw.setColumns(10);
 
-        texth = new JTextField();
-        texth.setToolTipText("Game height");
-        texth.setText(h);
-        texth.setBounds(160, 189, 40, 20);
-        contentPane.add(texth);
-        texth.setColumns(10);
-
-        JLabel lblX = new JLabel("x");
-        lblX.setHorizontalAlignment(SwingConstants.CENTER);
-        lblX.setBounds(145, 189, 10, 20);
-        contentPane.add(lblX);
 
         JButton btnExit = new JButton("Exit");
         btnExit.addActionListener(new ActionListener() {
@@ -144,24 +125,12 @@ public class Menu extends JFrame {
         contentPane.add(txtName);
         txtName.setColumns(10);
 
-        boxDifficulty = new JComboBox();
-        boxDifficulty.setModel(new DefaultComboBoxModel(new String[]{"Easy", "Normal", "Hard"}));
-        boxDifficulty.setSelectedIndex(difficulty);
-        boxDifficulty.setToolTipText("Degree of difficulty");
-        boxDifficulty.setBounds(100, 251, 100, 20);
-        contentPane.add(boxDifficulty);
 
         JLabel lblUser = new JLabel("User");
         lblUser.setFont(new Font("Tahoma", Font.PLAIN, 13));
         lblUser.setHorizontalAlignment(SwingConstants.CENTER);
         lblUser.setBounds(100, 344, 100, 20);
         contentPane.add(lblUser);
-
-        JLabel lblSettings = new JLabel("Settings");
-        lblSettings.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        lblSettings.setHorizontalAlignment(SwingConstants.CENTER);
-        lblSettings.setBounds(100, 158, 100, 20);
-        contentPane.add(lblSettings);
 
         JLabel lblBypixels = new JLabel("by 5pixels");
         lblBypixels.setHorizontalAlignment(SwingConstants.CENTER);
@@ -180,16 +149,6 @@ public class Menu extends JFrame {
         });
         btnReset.setBounds(100, 314, 100, 23);
         contentPane.add(btnReset);
-
-        squaresize = new JSpinner();
-        squaresize.setModel(new SpinnerNumberModel(size, 20, 40, 1));
-        squaresize.setBounds(160, 283, 40, 20);
-        contentPane.add(squaresize);
-
-        JLabel lblSquaresize = new JLabel("Size");
-        lblSquaresize.setToolTipText("Squaresize");
-        lblSquaresize.setBounds(100, 282, 55, 21);
-        contentPane.add(lblSquaresize);
     }
 
     /**

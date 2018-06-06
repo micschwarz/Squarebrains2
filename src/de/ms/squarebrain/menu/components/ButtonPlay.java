@@ -19,12 +19,8 @@ public class ButtonPlay implements MenuComponent
         panel.add(btnPlay);
     }
 
-    public JButton getBtnPlay() throws Exception
+    public JButton getBtnPlay()
     {
-        if(btnPlay == null) {
-            throw new Exception("Play Button not registered!");
-        }
-
         return btnPlay;
     }
 }
