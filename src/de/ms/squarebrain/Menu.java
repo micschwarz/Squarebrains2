@@ -15,16 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 public class Menu extends JFrame {
 
-    private JSpinner squaresize;
-    private JTextField textw;
-    private JTextField texth;
     public static Menu frame;
-    private JTextField txtName;
-    private JComboBox boxDifficulty;
-    private JComboBox boxGamemode;
-
-    //Settings
-    public int size = 20;
 
     // Settings
     private Resolution resolution;
@@ -78,8 +69,7 @@ public class Menu extends JFrame {
         ButtonPlay button = new ButtonPlay();
         button.registerComponent(contentPane);
         button.getBtnPlay().addActionListener(e -> {
-            size = (int) squaresize.getValue();
-            new Game(Integer.parseInt(textw.getText()), Integer.parseInt(texth.getText()), txtName.getText(), (String) boxGamemode.getSelectedItem(), (String) boxDifficulty.getSelectedItem(), size);
+            new Game(resolution.getWidth(), resolution.getHeight(), user.getUserName(), Integer.toString(gameMode.getGameModeId()), Integer.toString(difficulty.getDifficultyId()), 20);
             frame.setVisible(false);
         });
         // Add Exitbutton
@@ -116,7 +106,7 @@ public class Menu extends JFrame {
         // Add Highscore button
         ButtonHighscore btnScore = new ButtonHighscore();
         btnScore.registerComponent(contentPane);
-        btnScore.getBtnHighscore().addActionListener(e -> new HighscorePop((String) boxGamemode.getSelectedItem()));
+        btnScore.getBtnHighscore().addActionListener(e -> new HighscorePop(Integer.toString(gameMode.getGameModeId())));
 
         (new TextCreator()).registerComponent(contentPane);
     }
@@ -156,9 +146,9 @@ public class Menu extends JFrame {
     /**
      * Schreibt Einstellungen in eine Datei
      */
-    public void writeSettings()
+    private void writeSettings()
     {
-        String userpath = System.getProperty("user.home");
+        /*String userpath = System.getProperty("user.home");
         Path settingspath = Paths.get(userpath, ".squarebrain", "config.txt");
         File config = new File(settingspath.toString());
         config.getParentFile().mkdirs();
@@ -169,33 +159,25 @@ public class Menu extends JFrame {
             writer.println(txtName.getText());
             writer.println(boxDifficulty.getSelectedIndex());
             writer.println(boxGamemode.getSelectedIndex());
-            writer.println(squaresize.getValue());
             writer.close();
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
-    //setter
 
     /**
-     * Setzt Einstellungen zur�ck und speichert sie
+     * Resets settings
      *
      * @see #writeSettings()
      */
-    public void resetSettings()
+    void resetSettings()
     {
-        boxDifficulty.setSelectedIndex(1);
-        difficulty = 1;
-        boxGamemode.setSelectedIndex(0);
-        gamemode = 0;
-        textw.setText("600");
-        w = "600";
-        texth.setText("400");
-        h = "400";
-        squaresize.setValue(20);
-        size = 20;
+        user.reset();
+        difficulty.reset();
+        gameMode.reset();
+        resolution.reset();
         writeSettings();
     }
 }

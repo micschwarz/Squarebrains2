@@ -5,15 +5,16 @@ import de.ms.squarebrain.menu.components.base.Text;
 import javax.swing.*;
 import java.awt.*;
 
-public class GameMode implements MenuComponent
+public class GameMode implements MenuComponent, Resetable
 {
     private JComboBox<String> boxGameMode;
     private String[] gameModes = {"Classic", "Arcade"};
+    private int defaultValue = 0;
 
     @Override
     public void registerComponent(JPanel panel)
     {
-        registerComponent(panel, 0);
+        registerComponent(panel, defaultValue);
     }
 
     public void registerComponent(JPanel panel, int gameMode)
@@ -43,5 +44,16 @@ public class GameMode implements MenuComponent
     public String getGameModeName()
     {
         return gameModes[getGameModeId()];
+    }
+
+    public void setGameModeById(int value)
+    {
+        boxGameMode.setSelectedIndex(value);
+    }
+
+    @Override
+    public void reset()
+    {
+        setGameModeById(defaultValue);
     }
 }

@@ -5,15 +5,16 @@ import de.ms.squarebrain.menu.components.base.Text;
 import javax.swing.*;
 import java.awt.*;
 
-public class Difficulty implements MenuComponent
+public class Difficulty implements MenuComponent, Resetable
 {
     private JComboBox<String> boxDifficulty;
     private String[] difficulties = {"Easy", "Normal", "Hard"};
+    private int defaultValue = 1;
 
     @Override
     public void registerComponent(JPanel panel)
     {
-        registerComponent(panel, 1);
+        registerComponent(panel, defaultValue);
     }
 
     public void registerComponent(JPanel panel, int difficulty)
@@ -43,5 +44,16 @@ public class Difficulty implements MenuComponent
     public String getDifficultyName()
     {
         return difficulties[getDifficultyId()];
+    }
+
+    public void setDifficultyById(int value)
+    {
+        boxDifficulty.setSelectedIndex(value);
+    }
+
+    @Override
+    public void reset()
+    {
+        setDifficultyById(defaultValue);
     }
 }

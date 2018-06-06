@@ -2,14 +2,15 @@ package de.ms.squarebrain.menu.components;
 
 import javax.swing.*;
 
-public class User implements MenuComponent
+public class User implements MenuComponent, Resetable
 {
     JTextField inUser;
+    String defaultValue = "Max Mustermann";
 
     @Override
     public void registerComponent(JPanel panel)
     {
-        registerComponent(panel, "Max Mustermann");
+        registerComponent(panel, defaultValue);
     }
 
     public void registerComponent(JPanel panel, String name)
@@ -23,5 +24,16 @@ public class User implements MenuComponent
     public String getUserName()
     {
         return inUser.getText();
+    }
+
+    public void setUserName(String value)
+    {
+        inUser.setText(value);
+    }
+
+    @Override
+    public void reset()
+    {
+        setUserName(defaultValue);
     }
 }

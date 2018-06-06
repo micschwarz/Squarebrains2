@@ -5,15 +5,18 @@ import de.ms.squarebrain.menu.components.base.Text;
 import javax.swing.*;
 import java.awt.*;
 
-public class Resolution implements MenuComponent
+public class Resolution implements MenuComponent, Resetable
 {
     private JTextField fieldW;
     private JTextField fieldH;
 
+    private int defaultW = 600;
+    private int defaultH = 400;
+
     @Override
     public void registerComponent(JPanel panel)
     {
-        registerComponent(panel, 600, 400);
+        registerComponent(panel, defaultW, defaultH);
     }
 
     public void registerComponent(JPanel panel, int valueWidth, int valueHeight)
@@ -61,5 +64,22 @@ public class Resolution implements MenuComponent
     public int getHeight()
     {
         return Integer.parseInt(fieldH.getText());
+    }
+
+    public void setWidth(int value)
+    {
+        fieldW.setText(Integer.toString(value));
+    }
+
+    public void setHeight(int value)
+    {
+        fieldH.setText(Integer.toString(value));
+    }
+
+    @Override
+    public void reset()
+    {
+        setWidth(defaultW);
+        setHeight(defaultH);
     }
 }
