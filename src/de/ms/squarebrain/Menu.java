@@ -7,10 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Path;
@@ -31,7 +28,6 @@ import javax.swing.KeyStroke;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 
@@ -85,23 +81,8 @@ public class Menu extends JFrame {
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 300, 530);
+        setJMenuBar(getWindowBar());
 
-
-        JMenuBar menuBar = new JMenuBar();
-        setJMenuBar(menuBar);
-
-        JMenu mnHelp = new JMenu("Help");
-        menuBar.add(mnHelp);
-
-        JMenuItem mntmOpenHelp = new JMenuItem("Open Help");
-        mntmOpenHelp.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0)
-            {
-                new TutorialPop();
-            }
-        });
-        mntmOpenHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.ALT_MASK));
-        mnHelp.add(mntmOpenHelp);
         JPanel contentPane = new JPanel();
 
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -241,6 +222,27 @@ public class Menu extends JFrame {
         lblBg.setIcon(new ImageIcon(Menu.class.getResource("/de/ms/squarebrain/tex/BG_menu.png")));
         lblBg.setBounds(0, 0, 294, 480);
         contentPane.add(lblBg);
+    }
+
+
+    /**
+     * Get Window Bar for Main menu
+     *
+     * @return JMenuBar Menubar for window
+     */
+    private JMenuBar getWindowBar()
+    {
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu mnHelp = new JMenu("Help");
+        menuBar.add(mnHelp);
+
+        JMenuItem mntmOpenHelp = new JMenuItem("Open Help");
+        mntmOpenHelp.addActionListener(arg0 -> new TutorialPop());
+        mntmOpenHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.ALT_MASK));
+        mnHelp.add(mntmOpenHelp);
+
+        return menuBar;
     }
 
     //set window visible
