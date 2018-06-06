@@ -56,22 +56,20 @@ public class Menu extends JFrame {
     public static void main(String[] args)
     {
 
-        //Set System L&F
+        // Set System L&F
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        EventQueue.invokeLater(new Runnable() {
-            public void run()
-            {
-                try {
-                    frame = new Menu();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        // Create Menu
+        EventQueue.invokeLater(() -> {
+            try {
+                frame = new Menu();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }
@@ -80,7 +78,7 @@ public class Menu extends JFrame {
     /**
      * Erstellt das Menu
      */
-    public Menu()
+    private Menu()
     {
         setTitle("Squarebrain - Menu");
         setIconImage(Toolkit.getDefaultToolkit().getImage(Menu.class.getResource("/de/ms/squarebrain/tex/logoS.png")));
@@ -91,34 +89,6 @@ public class Menu extends JFrame {
 
         JMenuBar menuBar = new JMenuBar();
         setJMenuBar(menuBar);
-
-        JMenu mnGame = new JMenu("Game");
-        menuBar.add(mnGame);
-
-        JMenuItem mntmPlay = new JMenuItem("Play");
-        mntmPlay.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
-                size = (int) squaresize.getValue();
-                new Game(Integer.parseInt(textw.getText()), Integer.parseInt(texth.getText()), txtName.getText(), (String) boxGamemode.getSelectedItem(), (String) boxDifficulty.getSelectedItem(), size);
-                frame.setVisible(false);
-            }
-        });
-        mntmPlay.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.ALT_MASK));
-        mntmPlay.setHorizontalAlignment(SwingConstants.LEFT);
-        mnGame.add(mntmPlay);
-
-        JMenuItem mntmExit = new JMenuItem("Exit");
-        mntmExit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
-                writeSettings();
-                frame.dispose();
-            }
-        });
-        mntmExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.ALT_MASK));
-        mntmExit.setHorizontalAlignment(SwingConstants.LEFT);
-        mnGame.add(mntmExit);
 
         JMenu mnHelp = new JMenu("Help");
         menuBar.add(mnHelp);
