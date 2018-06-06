@@ -115,10 +115,7 @@ public class Menu extends JFrame {
         btnScore.registerComponent(contentPane);
         btnScore.getBtnHighscore().addActionListener(e -> new HighscorePop((String) boxGamemode.getSelectedItem()));
 
-        JLabel lblCreator = new JLabel("by micschwarz");
-        lblCreator.setHorizontalAlignment(SwingConstants.CENTER);
-        lblCreator.setFont(new Font("Tahoma", Font.PLAIN, 9));
-        contentPane.add(lblCreator);
+        (new TextCreator()).registerComponent(contentPane);
     }
 
     /**
