@@ -132,7 +132,7 @@ public class Menu extends JFrame {
         lblUser.setBounds(100, 344, 100, 20);
         contentPane.add(lblUser);
 
-        JLabel lblBypixels = new JLabel("by 5pixels");
+        JLabel lblBypixels = new JLabel("by micschwarz");
         lblBypixels.setHorizontalAlignment(SwingConstants.CENTER);
         lblBypixels.setFont(new Font("Tahoma", Font.PLAIN, 9));
         lblBypixels.setBounds(100, 437, 100, 14);
