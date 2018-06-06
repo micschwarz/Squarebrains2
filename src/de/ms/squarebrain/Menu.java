@@ -46,12 +46,12 @@ public class Menu extends JFrame {
     private JComboBox boxGamemode;
 
     //Settings
-    private static int difficulty;
-    private static int gamemode;
-    private static String w;
-    private static String h;
-    private static String name;
-    private static int size;
+    private static int difficulty = 1;
+    private static int gamemode = 0;
+    private static String w = "600";
+    private static String h = "400";
+    private static String name = "Max Mustermann";
+    private static int size = 20;
 
     public static void main(String[] args)
     {
@@ -61,43 +61,6 @@ public class Menu extends JFrame {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             e.printStackTrace();
-        }
-
-        //read Settings
-        String userpath = System.getProperty("user.home");
-        Path settingspath = Paths.get(userpath, ".squarebrain", "config.txt");
-        if (new File(settingspath.toString()).isFile()) {
-            int lines = 6;
-            FileReader fr = null;
-            try {
-                fr = new FileReader(settingspath.toString());
-            } catch (FileNotFoundException e1) {
-                e1.printStackTrace();
-            }
-            BufferedReader textReader = new BufferedReader(fr);
-            String[] data = new String[lines];
-            for (int i = 0; i < lines; i++) {
-                try {
-                    data[i] = textReader.readLine();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            ;
-            w = data[0];
-            h = data[1];
-            name = data[2];
-            difficulty = Integer.parseInt(data[3]);
-            gamemode = Integer.parseInt(data[4]);
-            size = Integer.parseInt(data[5]);
-
-        } else {
-            w = "600";
-            h = "400";
-            name = "5pixels";
-            difficulty = 1;
-            gamemode = 0;
-            size = 20;
         }
 
         EventQueue.invokeLater(new Runnable() {
@@ -114,7 +77,6 @@ public class Menu extends JFrame {
     }
 
 
-    @SuppressWarnings({"unchecked", "rawtypes"})//ignore errors
     /**
      * Erstellt das Menu
      */
