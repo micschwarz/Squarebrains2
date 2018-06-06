@@ -5,6 +5,9 @@
 
 Little game made by students as a project for class 
 
+## Notice
+This branch is under active development!
+
 ## Getting Started
 ### Prerequisites
 
