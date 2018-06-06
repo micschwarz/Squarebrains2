@@ -3,7 +3,7 @@ package de.ms.squarebrain.menu.components;
 import javax.swing.*;
 import java.awt.*;
 
-public class Heading implements MenuComponent
+public class Title implements MenuComponent
 {
     @Override
     public void registerComponent(JPanel panel)
@@ -11,7 +11,7 @@ public class Heading implements MenuComponent
         JPanel headingPanel = new JPanel(new GridBagLayout());
         headingPanel.setMinimumSize(new Dimension(400,400));
 
-        JLabel logo = new JLabel(new ImageIcon(Heading.class.getResource("/de/ms/squarebrain/tex/logoS.png")));
+        JLabel logo = new JLabel(new ImageIcon(Title.class.getResource("/de/ms/squarebrain/tex/logoS.png")));
         logo.setHorizontalAlignment(SwingConstants.CENTER);
         headingPanel.add(logo);
 

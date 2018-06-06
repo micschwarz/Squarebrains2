@@ -1,7 +1,7 @@
 package de.ms.squarebrain;
 
 import de.ms.squarebrain.menu.components.ButtonPlay;
-import de.ms.squarebrain.menu.components.Heading;
+import de.ms.squarebrain.menu.components.Title;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -74,8 +74,8 @@ public class Menu extends JFrame {
         contentPane.setBorder(BorderFactory.createEmptyBorder(20,40,20,40));
         contentPane.setLayout(new GridLayout(0,1 ,0,2));
 
-        // Add Heading
-        (new Heading()).registerComponent(contentPane);
+        // Add Title
+        (new Title()).registerComponent(contentPane);
         // Add Playbutton
         ButtonPlay button = new ButtonPlay();
         button.registerComponent(contentPane);
