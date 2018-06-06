@@ -83,6 +83,13 @@ public class Menu extends JFrame {
             new Game(Integer.parseInt(textw.getText()), Integer.parseInt(texth.getText()), txtName.getText(), (String) boxGamemode.getSelectedItem(), (String) boxDifficulty.getSelectedItem(), size);
             frame.setVisible(false);
         });
+        // Add Exitbutton
+        ButtonExit btnExit = new ButtonExit();
+        btnExit.registerComponent(contentPane);
+        btnExit.getBtnExit().addActionListener(e -> {
+            writeSettings();
+            frame.dispose();
+        });
 
         // SETTINGS
         // Add Settings Header
@@ -107,17 +114,6 @@ public class Menu extends JFrame {
         ButtonHighscore btnScore = new ButtonHighscore();
         btnScore.registerComponent(contentPane);
         btnScore.getBtnHighscore().addActionListener(e -> new HighscorePop((String) boxGamemode.getSelectedItem()));
-
-        JButton btnExit = new JButton("Exit");
-        btnExit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
-                writeSettings();
-                frame.dispose();
-            }
-        });
-        btnExit.setBounds(100, 124, 100, 23);
-        contentPane.add(btnExit);
 
         JLabel lblCreator = new JLabel("by micschwarz");
         lblCreator.setHorizontalAlignment(SwingConstants.CENTER);
