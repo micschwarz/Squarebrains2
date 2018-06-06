@@ -63,6 +63,15 @@ public class Menu extends JFrame {
         contentPane.setBorder(BorderFactory.createEmptyBorder(20,40,20,40));
         contentPane.setLayout(new GridLayout(0,1 ,0,2));
 
+        initGameSection(contentPane);
+        initSettingsSection(contentPane);
+        initUserSection(contentPane);
+
+        (new TextCreator()).registerComponent(contentPane);
+    }
+
+    private void initGameSection(JPanel contentPane)
+    {
         // Add Title
         (new Title()).registerComponent(contentPane);
         // Add Playbutton
@@ -79,7 +88,10 @@ public class Menu extends JFrame {
             writeSettings();
             frame.dispose();
         });
+    }
 
+    private void initSettingsSection(JPanel contentPane)
+    {
         // SETTINGS
         // Add Settings Header
         (new Heading()).registerComponent(contentPane, "Settings");
@@ -96,7 +108,10 @@ public class Menu extends JFrame {
         Reset reset = new Reset();
         reset.registerComponent(contentPane);
         reset.getBtnReset().addActionListener(arg0 -> new ResetSettingsPop(frame));
+    }
 
+    private void initUserSection(JPanel contentPane)
+    {
         // USER
         // Add User Header
         (new Heading()).registerComponent(contentPane,"User");
@@ -107,8 +122,6 @@ public class Menu extends JFrame {
         ButtonHighscore btnScore = new ButtonHighscore();
         btnScore.registerComponent(contentPane);
         btnScore.getBtnHighscore().addActionListener(e -> new HighscorePop(Integer.toString(gameMode.getGameModeId())));
-
-        (new TextCreator()).registerComponent(contentPane);
     }
 
     /**
