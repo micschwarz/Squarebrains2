@@ -69,13 +69,12 @@ public class Menu extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setBorder(BorderFactory.createEmptyBorder(20,40,20,40));
-        contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
+        contentPane.setLayout(new GridLayout(0,1 ));
 
         JLabel lblSqarebrain = new JLabel("SquareBrain");
         lblSqarebrain.setForeground(Color.BLACK);
         lblSqarebrain.setFont(new Font("Tahoma", Font.PLAIN, 20));
         lblSqarebrain.setHorizontalAlignment(SwingConstants.CENTER);
-        lblSqarebrain.setBounds(109, 29, 120, 50);
         contentPane.add(lblSqarebrain);
 
         JButton btnPlay = new JButton("Play");
@@ -88,7 +87,6 @@ public class Menu extends JFrame {
                 frame.setVisible(false);
             }
         });
-        btnPlay.setBounds(100, 90, 100, 23);
         contentPane.add(btnPlay);
 
         boxGamemode = new JComboBox();
