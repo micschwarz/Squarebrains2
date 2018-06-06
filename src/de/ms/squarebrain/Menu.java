@@ -26,12 +26,12 @@ public class Menu extends JFrame {
     private JComboBox boxGamemode;
 
     //Settings
-    private static int difficulty = 1;
-    private static int gamemode = 0;
-    private static String w = "600";
-    private static String h = "400";
-    private static String name = "Max Mustermann";
-    public static int size = 20;
+    private int difficulty = 1;
+    private int gamemode = 0;
+    private String w = "600";
+    private String h = "400";
+    private String name = "Max Mustermann";
+    public int size = 20;
 
     public static void main(String[] args)
     {
@@ -85,7 +85,7 @@ public class Menu extends JFrame {
         });
 
         // SETTINGS
-        // Add Settings Heading
+        // Add Settings Header
         (new Heading()).registerComponent(contentPane, "Settings");
         // Add Resolution
         (new Resolution()).registerComponent(contentPane, 600,400);
@@ -98,18 +98,15 @@ public class Menu extends JFrame {
         reset.registerComponent(contentPane);
         reset.getBtnReset().addActionListener(arg0 -> new ResetSettingsPop(frame));
 
-        JButton btnHighscore = new JButton("Highscore");
-        btnHighscore.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
-                new HighscorePop((String) boxGamemode.getSelectedItem());
-            }
-        });
-        btnHighscore.setToolTipText("Highscorelist");
-        btnHighscore.setBounds(100, 403, 100, 23);
-        contentPane.add(btnHighscore);
-
-
+        // USER
+        // Add User Header
+        (new Heading()).registerComponent(contentPane,"User");
+        //Add User Name
+        (new InputUser()).registerComponent(contentPane, name);
+        // Add Highscore button
+        ButtonHighscore btnScore = new ButtonHighscore();
+        btnScore.registerComponent(contentPane);
+        btnScore.getBtnHighscore().addActionListener(e -> new HighscorePop((String) boxGamemode.getSelectedItem()));
 
         JButton btnExit = new JButton("Exit");
         btnExit.addActionListener(new ActionListener() {
@@ -122,32 +119,10 @@ public class Menu extends JFrame {
         btnExit.setBounds(100, 124, 100, 23);
         contentPane.add(btnExit);
 
-        txtName = new JTextField();
-        txtName.setToolTipText("Playername");
-        txtName.setText(name);
-        txtName.setBounds(100, 372, 100, 20);
-        contentPane.add(txtName);
-        txtName.setColumns(10);
-
-
-        JLabel lblUser = new JLabel("User");
-        lblUser.setFont(new Font("Tahoma", Font.PLAIN, 13));
-        lblUser.setHorizontalAlignment(SwingConstants.CENTER);
-        lblUser.setBounds(100, 344, 100, 20);
-        contentPane.add(lblUser);
-
-        JLabel lblBypixels = new JLabel("by micschwarz");
-        lblBypixels.setHorizontalAlignment(SwingConstants.CENTER);
-        lblBypixels.setFont(new Font("Tahoma", Font.PLAIN, 9));
-        lblBypixels.setBounds(100, 437, 100, 14);
-        contentPane.add(lblBypixels);
-
-
-        JButton btnReset = new JButton("reset");
-        btnReset.setToolTipText("More settings");
-
-        btnReset.setBounds(100, 314, 100, 23);
-        contentPane.add(btnReset);
+        JLabel lblCreator = new JLabel("by micschwarz");
+        lblCreator.setHorizontalAlignment(SwingConstants.CENTER);
+        lblCreator.setFont(new Font("Tahoma", Font.PLAIN, 9));
+        contentPane.add(lblCreator);
     }
 
     /**
