@@ -1,5 +1,8 @@
 package de.ms.squarebrain;
 
+import de.ms.squarebrain.menu.components.ButtonPlay;
+import de.ms.squarebrain.menu.components.Heading;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,7 +32,7 @@ public class Menu extends JFrame {
     private static String w = "600";
     private static String h = "400";
     private static String name = "Max Mustermann";
-    private static int size = 20;
+    public static int size = 20;
 
     public static void main(String[] args)
     {
@@ -61,7 +64,7 @@ public class Menu extends JFrame {
         setIconImage(Toolkit.getDefaultToolkit().getImage(Menu.class.getResource("/de/ms/squarebrain/tex/logoS.png")));
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 300, 530);
+        setBounds(100, 100, 300, 600);
         setJMenuBar(getWindowBar());
 
         JPanel contentPane = new JPanel();
@@ -69,25 +72,22 @@ public class Menu extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setBorder(BorderFactory.createEmptyBorder(20,40,20,40));
-        contentPane.setLayout(new GridLayout(0,1 ));
+        contentPane.setLayout(new GridLayout(0,1 ,0,2));
 
-        JLabel lblSqarebrain = new JLabel("SquareBrain");
-        lblSqarebrain.setForeground(Color.BLACK);
-        lblSqarebrain.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        lblSqarebrain.setHorizontalAlignment(SwingConstants.CENTER);
-        contentPane.add(lblSqarebrain);
-
-        JButton btnPlay = new JButton("Play");
-        btnPlay.setToolTipText("Play game with your settings");
-        btnPlay.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+        // Add Heading
+        (new Heading()).registerComponent(contentPane);
+        // Add Playbutton
+        ButtonPlay button = new ButtonPlay();
+        button.registerComponent(contentPane);
+        try {
+            button.getBtnPlay().addActionListener(e -> {
                 size = (int) squaresize.getValue();
                 new Game(Integer.parseInt(textw.getText()), Integer.parseInt(texth.getText()), txtName.getText(), (String) boxGamemode.getSelectedItem(), (String) boxDifficulty.getSelectedItem(), size);
                 frame.setVisible(false);
-            }
-        });
-        contentPane.add(btnPlay);
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         boxGamemode = new JComboBox();
         boxGamemode.setToolTipText("Gamemode");
@@ -181,12 +181,6 @@ public class Menu extends JFrame {
         btnReset.setBounds(100, 314, 100, 23);
         contentPane.add(btnReset);
 
-        JLabel logo = new JLabel("");
-        logo.setHorizontalAlignment(SwingConstants.CENTER);
-        logo.setIcon(new ImageIcon(Menu.class.getResource("/de/ms/squarebrain/tex/logoM.png")));
-        logo.setBounds(60, 25, 50, 50);
-        contentPane.add(logo);
-
         squaresize = new JSpinner();
         squaresize.setModel(new SpinnerNumberModel(size, 20, 40, 1));
         squaresize.setBounds(160, 283, 40, 20);
@@ -196,13 +190,7 @@ public class Menu extends JFrame {
         lblSquaresize.setToolTipText("Squaresize");
         lblSquaresize.setBounds(100, 282, 55, 21);
         contentPane.add(lblSquaresize);
-
-        JLabel lblBg = new JLabel("");
-        lblBg.setIcon(new ImageIcon(Menu.class.getResource("/de/ms/squarebrain/tex/BG_menu.png")));
-        lblBg.setBounds(0, 0, 294, 480);
-        contentPane.add(lblBg);
     }
-
 
     /**
      * Get Window Bar for Main menu
