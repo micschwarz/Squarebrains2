@@ -54,7 +54,7 @@ public class HighscorePop extends JDialog {
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setVisible(true);
 		setTitle("Highscores - " + mode);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(HighscorePop.class.getResource("/com/pixels/squarebrain/main/tex/logoS.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(HighscorePop.class.getResource("/de/ms/squarebrain/tex/logoS.png")));
 		setBounds(100, 100, 300, 492);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

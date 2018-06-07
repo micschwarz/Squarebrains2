@@ -27,23 +27,14 @@ public class TutorialPop extends JDialog {
 
 
 	public TutorialPop() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(TutorialPop.class.getResource("/com/pixels/squarebrain/main/tex/logoS.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TutorialPop.class.getResource("/de/ms/squarebrain/tex/logoS.png")));
 		setTitle("Squarebrain Help");
 		
 		//Set System L&F
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			} 
-			catch (UnsupportedLookAndFeelException e) {
-				e.printStackTrace();
-			}
-			catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-			catch (InstantiationException e) {
-				e.printStackTrace();
-			}
-			catch (IllegalAccessException e) {
+			catch (Exception e) {
 				e.printStackTrace();
 			}
 		
@@ -65,7 +56,7 @@ public class TutorialPop extends JDialog {
 		tut01.setLayout(null);
 		
 		JLabel lblTutpic = new JLabel("");
-		lblTutpic.setIcon(new ImageIcon(TutorialPop.class.getResource("/com/pixels/squarebrain/main/tut/001.png")));
+		lblTutpic.setIcon(new ImageIcon(TutorialPop.class.getResource("/de/ms/squarebrain/tut/001.png")));
 		lblTutpic.setBounds(10, 11, 400, 300);
 		tut01.add(lblTutpic);
 		
@@ -78,7 +69,7 @@ public class TutorialPop extends JDialog {
 		tut02.setLayout(null);
 		
 		JLabel lblTutpic_1 = new JLabel("");
-		lblTutpic_1.setIcon(new ImageIcon(TutorialPop.class.getResource("/com/pixels/squarebrain/main/tut/002.png")));
+		lblTutpic_1.setIcon(new ImageIcon(TutorialPop.class.getResource("/de/ms/squarebrain/tut/002.png")));
 		lblTutpic_1.setBounds(10, 11, 400, 300);
 		tut02.add(lblTutpic_1);
 		
@@ -91,7 +82,7 @@ public class TutorialPop extends JDialog {
 		tut03.setLayout(null);
 		
 		JLabel lblTutpic_2 = new JLabel("");
-		lblTutpic_2.setIcon(new ImageIcon(TutorialPop.class.getResource("/com/pixels/squarebrain/main/tut/003.png")));
+		lblTutpic_2.setIcon(new ImageIcon(TutorialPop.class.getResource("/de/ms/squarebrain/tut/003.png")));
 		lblTutpic_2.setBounds(10, 11, 400, 300);
 		tut03.add(lblTutpic_2);
 		
@@ -121,7 +112,7 @@ public class TutorialPop extends JDialog {
 		tut04.add(lblDerNormaleJoker);
 		
 		JLabel lblTutpicj1 = new JLabel("");
-		lblTutpicj1.setIcon(new ImageIcon(TutorialPop.class.getResource("/com/pixels/squarebrain/main/sqr/sqrfail.png")));
+		lblTutpicj1.setIcon(new ImageIcon(TutorialPop.class.getResource("/de/ms/squarebrain/sqr/sqrfail.png")));
 		lblTutpicj1.setBounds(10, 86, 20, 20);
 		tut04.add(lblTutpicj1);
 		
@@ -135,12 +126,12 @@ public class TutorialPop extends JDialog {
 		tut04.add(lblDerSuperJoker);
 		
 		JLabel lblTutpicj2 = new JLabel("");
-		lblTutpicj2.setIcon(new ImageIcon(TutorialPop.class.getResource("/com/pixels/squarebrain/main/sqr/sqrfail.png")));
+		lblTutpicj2.setIcon(new ImageIcon(TutorialPop.class.getResource("/de/ms/squarebrain/sqr/sqrfail.png")));
 		lblTutpicj2.setBounds(10, 208, 20, 20);
 		tut04.add(lblTutpicj2);
 		
 		JLabel lblTutpicj3 = new JLabel("");
-		lblTutpicj3.setIcon(new ImageIcon(TutorialPop.class.getResource("/com/pixels/squarebrain/main/sqr/sqrnxt.png")));
+		lblTutpicj3.setIcon(new ImageIcon(TutorialPop.class.getResource("/de/ms/squarebrain/sqr/sqrnxt.png")));
 		lblTutpicj3.setBounds(36, 208, 20, 20);
 		tut04.add(lblTutpicj3);
 		

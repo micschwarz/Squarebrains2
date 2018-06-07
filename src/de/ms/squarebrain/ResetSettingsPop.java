@@ -46,7 +46,7 @@ public class ResetSettingsPop extends JDialog {
 		
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setVisible(true);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(ResetSettingsPop.class.getResource("/com/pixels/squarebrain/main/tex/logoS.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ResetSettingsPop.class.getResource("/de/ms/squarebrain/tex/logoS.png")));
 		setTitle("Reset Settings?");
 		setBounds(100, 100, 297, 110);
 		getContentPane().setLayout(new BorderLayout());
