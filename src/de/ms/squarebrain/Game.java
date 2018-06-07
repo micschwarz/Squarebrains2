@@ -96,7 +96,7 @@ public class Game
         int[] bgDimentions = getBackgroundDimentions();
 
 
-        stift.drawImage(bgimg, 0, 0, bgDimentions[0], bgDimentions[1], Window); //draw background
+        stift.drawImage(bgimg, (int)((bgDimentions[0] - Window.getW()) * -0.5), (int)((bgDimentions[1] - Window.getH()) * -0.5), bgDimentions[0], bgDimentions[1], Window); //draw background
         
         //Anzeige
         String anzeige= "Punktzahl: " + punktzahl + " | Modus: " + mode + ", " + difficulty + " | User: " + name;
