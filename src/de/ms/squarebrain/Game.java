@@ -9,6 +9,8 @@ package de.ms.squarebrain;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
@@ -20,18 +22,18 @@ import javax.imageio.ImageIO;
 public class Game
 {
     
-    private Window Window;				//Spielfenster
+    private Window          Window;				//Spielfenster
     private Elementschlange schlange;	//Quadratschlange
-    private Element aktuellesElement;	//Zu klickendes Quadrat
-    private int zustand;				//0 = start, 1 = erster Klick ok, 2 = zweiter Klick ok, 3 = gameover, 4 = simulation, 5 = JokerFail
-    private int punktzahl;				//Spielepunktzahl
-    private Image bgimg;				//Hintergrundbild
-    private boolean imginit;			//Kontrollvariable f�r Bildimport
-    private String name;				//Playername
-    private String mode;				//Gamemode
-    private String difficulty;			//Schwierigkeit
-    private Highscore scorelist;		//Highscoreliste
-    private int size;					//Spielsteingr��e
+    private Element         aktuellesElement;	//Zu klickendes Quadrat
+    private int             zustand;				//0 = start, 1 = erster Klick ok, 2 = zweiter Klick ok, 3 = gameover, 4 = simulation, 5 = JokerFail
+    private int             punktzahl;				//Spielepunktzahl
+    private BufferedImage   bgimg;				//Hintergrundbild
+    private boolean         imginit;			//Kontrollvariable f�r Bildimport
+    private String          name;				//Playername
+    private String          mode;				//Gamemode
+    private String          difficulty;			//Schwierigkeit
+    private Highscore       scorelist;		//Highscoreliste
+    private int             size;					//Spielsteingr��e
     
     //Konstruktor
 	/**
@@ -73,7 +75,7 @@ public class Game
     public void initimg(){
     	if (imginit == false){
         	try {
-                bgimg = ImageIO.read(this.getClass().getResource("tex/bg.jpg"));
+                bgimg = ImageIO.read(this.getClass().getResource("tex/bg2.png"));
                 imginit = true;
             } catch (IOException e) {
             }
@@ -90,7 +92,11 @@ public class Game
     	initimg();
         @SuppressWarnings("static-access")//ignore errors
 		Graphics stift = Window.getStift();
-        stift.drawImage(bgimg, 0, 0, Window.getW()+20, Window.getH()+20, Window); //draw background
+
+        int[] bgDimentions = getBackgroundDimentions();
+
+
+        stift.drawImage(bgimg, 0, 0, bgDimentions[0], bgDimentions[1], Window); //draw background
         
         //Anzeige
         String anzeige= "Punktzahl: " + punktzahl + " | Modus: " + mode + ", " + difficulty + " | User: " + name;
@@ -107,6 +113,27 @@ public class Game
         aktuellesElement.ausgeben();
         Window.repaint();
         
+    }
+
+    public int[] getBackgroundDimentions()
+    {
+        int windowW = Window.getW();
+        int windowH = Window.getH();
+        int imageW = bgimg.getWidth();
+        int imageH = bgimg.getHeight();
+
+        float multiplierW = (float)windowW / imageW;
+        float multiplierH = (float)windowH / imageH;
+
+        int newImageW = (int)(imageW * multiplierW);
+        int newImageH = (int)(imageH * multiplierW);
+
+        if(newImageH < windowH) {
+            newImageW = (int)(imageW * multiplierH);
+            newImageH = (int)(imageH * multiplierH);
+        }
+
+        return new int[]{newImageW, newImageH};
     }
         
 
