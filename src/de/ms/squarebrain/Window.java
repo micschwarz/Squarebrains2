@@ -39,7 +39,7 @@ public class Window extends JFrame{
     public Window(final Game spiel, int w, int h){
         super("Squarebrain");
         setTitle("Squarebrain");
-        setIconImage(Toolkit.getDefaultToolkit().getImage(Menu.class.getResource("/com/pixels/squarebrain/main/tex/logoS.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(Menu.class.getResource("/de/ms/squarebrain/tex/logoS.png")));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
         setFocusable(true);
